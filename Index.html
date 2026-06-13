@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Tutor - Elite Tutoring Agency</title>
+    <style>
+        /* برانڈنگ اور کلرز */
+        :root {
+            --primary: #1e3a8a; /* رائل بلیو کلر جو پروفیشنل لک دیتا ہے */
+            --secondary: #0ea5e9;
+            --dark: #0f172a;
+            --light: #f8fafc;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light);
+            color: var(--dark);
+            text-align: center;
+        }
+
+        /* ہوم پیج کا مین بینر */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 80px 20px;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+
+        /* کارڈز اور بٹن کنٹینر */
+        .container {
+            max-width: 1100px;
+            margin: -40px auto 50px auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 450px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-50px);
+        }
+
+        .card h2 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-top: 20px;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+        }
+
+        /* فارم والا سیکشن جو شروع میں چھپا ہوگا */
+        .form-section {
+            display: none;
+            max-width: 800px;
+            margin: 40px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .form-section h2 {
+            color: var(--primary);
+        }
+
+        /* گوگل فارم کو خوبصورت فریم میں دکھانے کے لیے */
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .back-btn {
+            background-color: #64748b;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. ہوم پیج اور ویلکم میسج -->
+    <div class="hero">
+        <h1>Welcome to Home Tutor</h1>
+        <p>Premium Home & Online Tutoring Services in Lahore. Connecting Elite Parents with Certified Professional Teachers.</p>
+    </div>
+
+    <!-- 2. ٹیچرز اور پیرنٹس کے سلیکشن کارڈز -->
+    <div class="container" id="main-options">
+        
+        <!-- والدین کے لیے کارڈ -->
+        <div class="card">
+            <h2>Looking for a Tutor?</h2>
+            <p>Find the best home or online tutor for O/A Levels, Metric, FSc, or Junior classes in Lahore.</p>
+            <button class="btn" onclick="showForm('parent')">Find a Tutor</button>
+        </div>
+
+        <!-- ٹیوٹرز کے لیے کارڈ -->
+        <div class="card">
+            <h2>Join as a Teacher?</h2>
+            <p>Are you a professional teacher looking for part-time home tutoring or online tuition opportunities?</p>
+            <button class="btn" onclick="showForm('teacher')">Register Now</button>
+        </div>
+
+    </div>
+
+    <!-- 3. پیرنٹس کا گوگل فارم سیکشن -->
+    <div id="parent-form-section" class="form-section">
+        <button class="btn back-btn" onclick="goBack()">← Go Back</button>
+        <h2>Parent Requirements Form</h2>
+        <!-- نیچے src کے اندر آپ نے اپنے پیرنٹ والے گوگل فارم کا لنک لگانا ہے -->
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfD_YOUR_PARENT_FORM_ID/viewform?embedded=true">Loading…</iframe>
+    </div>
+
+    <!-- 4. ٹیچرز کا گوگل فارم سیکشن -->
+    <div id="teacher-form-section" class="form-section">
+        <button class="btn back-btn" onclick="goBack()">← Go Back</button>
+        <h2>Teacher Registration Form</h2>
+        <!-- نیچے src کے اندر آپ نے اپنے ٹیچر والے گوگل فارم کا لنک لگانا ہے -->
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfD_YOUR_TEACHER_FORM_ID/viewform?embedded=true">Loading…</iframe>
+    </
