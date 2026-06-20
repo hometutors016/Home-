@@ -3,162 +3,277 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Tutor - Elite Tutoring Agency</title>
+    <title>Home Tutor | Premium Tutoring Service</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
-        /* برانڈنگ اور کلرز */
-        :root {
-            --primary: #1e3a8a; /* رائل بلیو کلر جو پروفیشنل لک دیتا ہے */
-            --secondary: #0ea5e9;
-            --dark: #0f172a;
-            --light: #f8fafc;
-        }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--light);
-            color: var(--dark);
-            text-align: center;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8f6fa;
         }
-
-        /* ہوم پیج کا مین بینر */
-        .hero {
-            background: linear-gradient(135deg, var(--primary), var(--dark));
-            color: white;
-            padding: 80px 20px;
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        .bg-brand-purple { background-color: #3b2063; }
+        .text-brand-purple { color: #3b2063; }
+        .border-brand-purple { border-color: #3b2063; }
+        .bg-brand-orange { background-color: #e67e22; }
+        .text-brand-orange { color: #e67e22; }
+        
+        .hero-banner-bg {
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.95) 40%, rgba(255, 255, 255, 0.4)), 
+                              url('https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=1920');
+            background-size: cover;
+            background-position: center;
         }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto 30px auto;
-        }
-
-        /* کارڈز اور بٹن کنٹینر */
-        .container {
-            max-width: 1100px;
-            margin: -40px auto 50px auto;
-            padding: 0 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-        }
-
-        .card {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            width: 100%;
-            max-width: 450px;
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-50px);
-        }
-
-        .card h2 {
-            color: var(--primary);
-            margin-top: 0;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--primary);
-            color: white;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            margin-top: 20px;
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
-            transition: background 0.3s;
-        }
-
-        .btn:hover {
-            background-color: var(--secondary);
-        }
-
-        /* فارم والا سیکشن جو شروع میں چھپا ہوگا */
-        .form-section {
+        
+        .app-screen {
             display: none;
-            max-width: 800px;
-            margin: 40px auto;
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        .app-screen.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .form-section h2 {
-            color: var(--primary);
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 6px;
         }
-
-        /* گوگل فارم کو خوبصورت فریم میں دکھانے کے لیے */
-        iframe {
-            width: 100%;
-            height: 600px;
-            border: none;
-            border-radius: 8px;
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
         }
-
-        .back-btn {
-            background-color: #64748b;
-            margin-bottom: 20px;
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #dcd6e7;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #3b2063;
         }
     </style>
 </head>
-<body>
+<body class="text-gray-800 antialiased flex flex-col min-h-screen">
 
-    <!-- 1. ہوم پیج اور ویلکم میسج -->
-    <div class="hero">
-        <h1>Welcome to Home Tutor</h1>
-        <p>Premium Home & Online Tutoring Services in Lahore. Connecting Elite Parents with Certified Professional Teachers.</p>
-    </div>
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-xs border-b border-gray-100 px-4 py-4">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            
+            <div class="flex items-center gap-2 cursor-pointer mx-auto sm:mx-0" onclick="navigateTo('home-screen')">
+                <div class="w-10 h-10 bg-brand-purple rounded-xl flex items-center justify-center p-2 shadow-md shadow-purple-900/20">
+                    <svg viewBox="0 0 24 24" class="w-6 h-6 text-white fill-current">
+                        <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5.47 11.43L12 14.99l6.53-3.56L12 8.56l-6.53 2.87z"/>
+                    </svg>
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold text-brand-purple tracking-tight">Home<span class="text-brand-orange">Tutor<span class="text-xs font-normal text-gray-400">.pk</span></span></span>
+                    <p class="text-[9px] text-gray-400 uppercase tracking-widest font-bold -mt-1">Premium Network</p>
+                </div>
+            </div>
 
-    <!-- 2. ٹیچرز اور پیرنٹس کے سلیکشن کارڈز -->
-    <div class="container" id="main-options">
-        
-        <!-- والدین کے لیے کارڈ -->
-        <div class="card">
-            <h2>Looking for a Tutor?</h2>
-            <p>Find the best home or online tutor for O/A Levels, Metric, FSc, or Junior classes in Lahore.</p>
-            <button class="btn" onclick="showForm('parent')">Find a Tutor</button>
         </div>
+    </nav>
 
-        <!-- ٹیوٹرز کے لیے کارڈ -->
-        <div class="card">
-            <h2>Join as a Teacher?</h2>
-            <p>Are you a professional teacher looking for part-time home tutoring or online tuition opportunities?</p>
-            <button class="btn" onclick="showForm('teacher')">Register Now</button>
-        </div>
+    <main class="max-w-6xl mx-auto px-4 py-6 md:py-10 flex-grow w-full">
 
-    </div>
+        <section id="home-screen" class="app-screen active space-y-10">
+            
+            <div class="hero-banner-bg rounded-3xl p-6 md:p-12 shadow-xl shadow-gray-200/80 border border-white">
+                <div class="max-w-xl space-y-4 text-left py-6">
+                    <div class="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 px-4 py-1.5 rounded-full shadow-xs">
+                        <div class="flex text-amber-500 text-xs gap-0.5">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <span class="text-xs font-bold text-amber-900">4.9/5 Rated Premium Service</span>
+                    </div>
+                    <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+                        Pakistan's Premier <br><span class="text-brand-purple">Home & Online Tutoring</span> Network
+                    </h1>
+                    <p class="text-sm md:text-base text-gray-600 font-medium leading-relaxed">
+                        Trusted by 5,000+ Families. We connect you with qualified, background-verified tutors, specialized educators, and professional therapists to guarantee results.
+                    </p>
+                </div>
+            </div>
 
-    <!-- 3. پیرنٹس کا گوگل فارم سیکشن -->
-    <div id="parent-form-section" class="form-section">
-        <button class="btn back-btn" onclick="goBack()">← Go Back</button>
-        <h2>Parent Requirements Form</h2>
-        <!-- نیچے src کے اندر آپ نے اپنے پیرنٹ والے گوگل فارم کا لنک لگانا ہے -->
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfD_YOUR_PARENT_FORM_ID/viewform?embedded=true">Loading…</iframe>
-    </div>
+            <div class="bg-white border border-gray-100 rounded-3xl p-6 md:p-10 shadow-xl shadow-gray-200/50 max-w-4xl mx-auto text-center space-y-6">
+                <div class="inline-flex items-center justify-center w-12 h-12 bg-purple-50 text-brand-purple rounded-2xl text-xl mb-1">
+                    <i class="fas fa-history"></i>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 tracking-tight">
+                    Our Legacy & Trust
+                </h2>
+                <p class="text-sm md:text-base text-gray-600 leading-relaxed font-medium max-w-3xl mx-auto">
+                    For nearly a decade, we have been dedicated to transforming education by connecting parents with premium, qualified tutors. While our journey began over 8 years ago with a strong, trusted presence on social media platforms like Facebook, we have now expanded into a fully digital space to serve you better. Our long-standing experience ensures that your children receive the highest quality personalized learning, backed by years of academic success. Now, with our new platform, connecting with elite tutors worldwide is just a single click away. Trust the experts who know education best.
+                </p>
 
-    <!-- 4. ٹیچرز کا گوگل فارم سیکشن -->
-    <div id="teacher-form-section" class="form-section">
-        <button class="btn back-btn" onclick="goBack()">← Go Back</button>
-        <h2>Teacher Registration Form</h2>
-        <!-- نیچے src کے اندر آپ نے اپنے ٹیچر والے گوگل فارم کا لنک لگانا ہے -->
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfD_YOUR_TEACHER_FORM_ID/viewform?embedded=true">Loading…</iframe>
-    </
+                <div class="border-t border-gray-100 pt-6 text-left max-w-xl mx-auto">
+                    <h4 class="text-sm font-bold text-brand-purple uppercase tracking-wider mb-3 text-center md:text-left">Curriculums & Specializations We Cover:</h4>
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-gray-600 font-semibold md:pl-4">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-orange"></i> IB (International Baccalaureate)</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-orange"></i> O-Level, A-Level, (CAIE's) & IGCSE</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-orange"></i> Matric / F. Sc. / BS / Professional Degree</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-orange"></i> Grand Teacher & Experienced Scholars</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-orange"></i> Shadow Teacher for Inclusive Learning</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-orange"></i> Professional Therapy & Special Education</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                
+                <div class="group bg-white border border-gray-100 rounded-3xl p-6 md:p-8 shadow-xl shadow-gray-200/50 hover:border-purple-200 transition-all flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute -right-4 -top-4 w-24 h-24 bg-purple-50 rounded-full group-hover:scale-125 transition-transform"></div>
+                    <div class="relative w-full">
+                        <div class="w-12 h-12 bg-purple-100 rounded-2xl flex items-center justify-center text-brand-purple text-xl font-bold mb-4">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-2">For Parents / Students</h2>
+                        <p class="text-sm text-gray-500 leading-relaxed mb-6">
+                            Hire the perfect teacher, grand teacher, shadow teacher, or therapist. Choose your preferred mode below:
+                        </p>
+                        
+                        <div class="grid grid-cols-2 gap-3 mb-2">
+                            <button onclick="navigateTo('parent-online-screen')" class="bg-brand-purple hover:bg-opacity-90 text-white font-bold py-3 px-4 rounded-xl text-xs flex items-center justify-center gap-2 transition-all cursor-pointer shadow-md shadow-purple-900/10">
+                                <i class="fas fa-globe"></i> Online Class
+                            </button>
+                            <button onclick="navigateTo('parent-physical-screen')" class="bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-3 px-4 rounded-xl text-xs flex items-center justify-center gap-2 transition-all cursor-pointer">
+                                <i class="fas fa-home"></i> Physical Class
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group bg-white border border-gray-100 rounded-3xl p-6 md:p-8 shadow-xl shadow-gray-200/50 hover:border-orange-200 transition-all flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute -right-4 -top-4 w-24 h-24 bg-orange-50 rounded-full group-hover:scale-125 transition-transform"></div>
+                    <div class="relative w-full">
+                        <div class="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center text-brand-orange text-xl font-bold mb-4">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-2">For Experts & Tutors</h2>
+                        <p class="text-sm text-gray-500 leading-relaxed mb-6">
+                            Join Pakistan's highest-paying professional network for Tutors, Grand Teachers, Shadow Teachers, and Therapists.
+                        </p>
+                        
+                        <div class="grid grid-cols-2 gap-3 mb-2">
+                            <button onclick="navigateTo('teacher-online-screen')" class="bg-brand-orange hover:bg-opacity-95 text-white font-bold py-3 px-4 rounded-xl text-xs flex items-center justify-center gap-2 transition-all cursor-pointer shadow-md shadow-orange-500/10">
+                                <i class="fas fa-laptop-house"></i> Online Expert
+                            </button>
+                            <button onclick="navigateTo('teacher-physical-screen')" class="bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-3 px-4 rounded-xl text-xs flex items-center justify-center gap-2 transition-all cursor-pointer">
+                                <i class="fas fa-chalkboard-teacher"></i> Physical Expert
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-brand-purple text-white rounded-3xl p-6 md:p-8 max-w-4xl mx-auto grid grid-cols-3 text-center gap-2 shadow-xl shadow-purple-950/20">
+                <div>
+                    <p class="text-2xl md:text-4xl font-extrabold text-brand-orange">5,000+</p>
+                    <p class="text-[10px] md:text-xs font-medium uppercase tracking-wider text-purple-200 mt-1">Families Verified</p>
+                </div>
+                <div class="border-x border-purple-500/30">
+                    <p class="text-2xl md:text-4xl font-extrabold text-brand-orange">100%</p>
+                    <p class="text-[10px] md:text-xs font-medium uppercase tracking-wider text-purple-200 mt-1">Verified Network</p>
+                </div>
+                <div>
+                    <p class="text-2xl md:text-4xl font-extrabold text-brand-orange">Guaranteed</p>
+                    <p class="text-[10px] md:text-xs font-medium uppercase tracking-wider text-purple-200 mt-1">Premium Results</p>
+                </div>
+            </div>
+
+            <div class="max-w-4xl mx-auto space-y-8">
+                <div class="text-center md:text-left space-y-1">
+                    <h2 class="text-2xl font-extrabold text-gray-900 tracking-tight flex items-center justify-center md:justify-start gap-2">
+                        <i class="fas fa-shield-alt text-brand-purple text-xl"></i> Verified Star Educators Pool
+                    </h2>
+                    <p class="text-xs text-gray-400 font-medium">Verified expert listings with strict identity and contact privacy protocols.</p>
+                </div>
+
+                <div class="bg-white border border-gray-100 rounded-3xl p-5 md:p-6 shadow-xl shadow-gray-200/50">
+                    <div class="flex items-center gap-2.5 border-b border-gray-50 pb-3 mb-4">
+                        <div class="w-8 h-8 bg-orange-50 text-brand-orange rounded-xl flex items-center justify-center text-sm font-bold">
+                            <i class="fas fa-star text-amber-500"></i>
+                        </div>
+                        <h3 class="font-extrabold text-gray-900 text-base">Elite Educator Pool (Privacy Guarded)</h3>
+                    </div>
+                    <div class="overflow-x-auto custom-scrollbar">
+                        <table class="w-full text-left border-collapse min-w-[600px]">
+                            <thead>
+                                <tr class="bg-gray-50/70 border-b border-gray-100">
+                                    <th class="p-3 text-[11px] font-bold text-gray-400 uppercase tracking-wider">Expert Gender</th>
+                                    <th class="p-3 text-[11px] font-bold text-gray-400 uppercase tracking-wider">City Location</th>
+                                    <th class="p-3 text-[11px] font-bold text-gray-400 uppercase tracking-wider">Specialization & Profile</th>
+                                    <th class="p-3 text-[11px] font-bold text-gray-400 uppercase tracking-wider">Verification Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="teacher-table-body" class="divide-y divide-gray-50 text-xs">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <div class="bg-white border border-gray-100 rounded-3xl p-6 shadow-xl shadow-gray-200/50 space-y-4">
+                    <div class="flex items-center gap-3 border-b border-gray-50 pb-3">
+                        <div class="w-9 h-9 bg-amber-50 rounded-xl flex items-center justify-center text-amber-500">
+                            <i class="fas fa-comment-dots"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-900 text-base">Share Your Story</h3>
+                            <p class="text-[11px] text-gray-400 font-medium">Leave feedback for your assigned expert</p>
+                        </div>
+                    </div>
+                    <form onsubmit="handleFormSubmit(event, 'Parent Testimonial')" class="space-y-3">
+                        <div class="grid grid-cols-2 gap-2">
+                            <input type="text" required placeholder="Your Name" class="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-xs focus:outline-hidden focus:border-brand-purple focus:bg-white transition-all">
+                            <input type="text" required placeholder="City (e.g. Lahore)" class="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-xs focus:outline-hidden focus:border-brand-purple focus:bg-white transition-all">
+                        </div>
+                        <div>
+                            <select required class="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-xs text-gray-500 focus:outline-hidden focus:border-brand-purple focus:bg-white transition-all appearance-none cursor-pointer">
+                                <option value="" disabled selected>Give Rating Stars...</option>
+                                <option value="5 Stars">⭐⭐⭐⭐⭐ 5/5 Excellent</option>
+                                <option value="4 Stars">⭐⭐⭐⭐ 4/5 Very Good</option>
+                            </select>
+                        </div>
+                        <div>
+                            <textarea required rows="2" placeholder="Write your feedback regarding our assigned expert..." class="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-xs focus:outline-hidden focus:border-brand-purple focus:bg-white transition-all resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-brand-purple hover:bg-opacity-95 text-white font-bold py-2.5 rounded-xl text-xs transition-all">
+                            Submit Public Review
+                        </button>
+                    </form>
+                </div>
+
+                <div class="bg-white border border-gray-100 rounded-3xl p-6 shadow-xl shadow-gray-200/50 space-y-4">
+                    <div class="flex items-center gap-3 border-b border-gray-50 pb-3">
+                        <div class="w-9 h-9 bg-red-50 rounded-xl flex items-center justify-center text-red-500">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-900 text-base">Complaints & Suggestions</h3>
+                            <p class="text-[11px] text-gray-400 font-medium">Direct secure portal to management</p>
+                        </div>
+                    </div>
+                    <form onsubmit="handleFormSubmit(event, 'Management Complaint/Suggestion')" class="space-y-3">
+                        <div class="grid grid-cols-2 gap-2">
+                            <input type="text" required placeholder="Registered Name / Phone" class="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-xs focus:outline-hidden focus:border-red-500 focus:bg-white transition-all">
+                            <select required class="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-xs text-gray-500 focus:outline-hidden focus:border-red-500 focus:bg-white transition-all appearance-none cursor-pointer">
+                                <option value="" disabled selected>Select Category...</option>
+                                <option value="Expert Behavior">Expert Behavior Issue</option>
+                                <option value="Timing/Absence">Timing or Absence</option>
+                            </select>
+                        </div>
+                        <div>
+                            <textarea required rows="3" placeholder="Please describe your complaint or feedback details explicitly..." class="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-xs focus:outline-hidden focus:border-red-500 focus:bg-white transition-all resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2.5 rounded-xl text-xs transition-all">
+                            File Formal Complaint
+                        </button>
+                    </form>
+                </div>
+            </div>
+                            </section>
+                            
